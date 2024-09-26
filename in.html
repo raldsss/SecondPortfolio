@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+  
+</style>
+<body>
+    
+    <header>
+        <nav>
+            <div class="logo">My <span>Portfolio</span></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#">Project</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="background"></div> <!-- Separate background container -->
+
+        <section class="content" id="home">
+            <h1>Hello I'm <span id="typing-text"></span></h1>
+            <p>I'm Dedicated as Front-End Developer in the future.</p>
+            <div class="arrow" id="arrow-down">
+              <i class="fa-solid fa-angles-down"></i>
+            </div>
+        </section>
+
+       <!-- About Section -->
+       <section id="about">
+        <div class="about-section">
+            <div class="profile-picture">
+                <img src="Escare, Gerald B.jpg" alt="Gerald Escare">
+            </div>
+            <div class="name">Gerald Escare</div>
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>This is me blablablablabla. Add a short introduction or details here to describe yourself.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <p>This is my hobbies if you can see its all about game because game is the way to make me happy.</p>
+        
+        <!-- Image Gallery -->
+        <div class="gallery">
+            <img src="gif1.gif" alt="Project 1">
+            <img src="gif2.gif" alt="Project 2">
+            <img src="gif3.gif" alt="Project 3">
+            <img src="gif4.gif" alt="Project 4">
+            <img src="gif5.gif" alt="Project 5">
+            <img src="gif6.gif" alt="Project 6">
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>&copy; 2024 Gerald Escare. All rights reserved.</p>
+        <p>Contact: <a href="mailto:gerald.com">gerald.com</a></p>
+    </footer>
+
+    <script>
+const colors = ['#333', '#1c1c1c', '#2f2f2f']; // Array of background colors
+let currentIndex = 0;
+const background = document.querySelector('.background');
+
+function changeBackground() {
+    background.style.transition = 'background-color 1s ease'; // Ensure fade effect
+    background.style.backgroundColor = colors[currentIndex];
+    currentIndex = (currentIndex + 1) % colors.length; // Loop through the colors
+}
+
+setInterval(changeBackground, 3000); // Change background every 3 seconds
+
+const textArray = ["Gerald Escare"];
+let textIndex = 0;
+let charIndex = 0;
+const typingText = document.getElementById('typing-text');
+
+function type() {
+  if (charIndex < textArray[textIndex].length) {
+    typingText.textContent += textArray[textIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, 100); 
+  } else {
+    setTimeout(erase, 1000);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    typingText.textContent = textArray[textIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, 50); 
+  } else {
+    textIndex = (textIndex + 1) % textArray.length;
+    setTimeout(type, 500); 
+  }
+}
+
+type();
+
+// Smooth scroll to About section when arrow is clicked
+document.getElementById('arrow-down').addEventListener('click', function() {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+});
+    </script>
+</body>
+</html>
